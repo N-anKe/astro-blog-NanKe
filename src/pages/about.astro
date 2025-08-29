@@ -1,8 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "关于我";
 
@@ -16,14 +13,12 @@ const identity = {
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
 const happy = true;
-const finished = false;
+const finished = true;
 const goal = 3;
-const skillColor = "navy";
+const skillColor = "red";
 ---
 
-<Layout>
-    <Header />
-    <h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
     <p>以下是关于我的几个事实：</p>
     <ul>
         <li>我的名字是{identity.firstName}.</li>
@@ -41,16 +36,11 @@ const skillColor = "navy";
     {finished && <p>我完成了这节教程！</p>}
 
     {goal === 3 ? <p>我的目标是在三天内完成。</p> : <p>我的目标不是 3 天。</p>}
-    <Footer />
-</Layout>
 
-<style define:vars={{skillColor}}>
-    h1 {
-    color: purple;
-    font-size: 4rem;
-    }
-    .skill {
-    color: var(--skillColor);
-    font-weight: bold;
-    }
-</style>
+    <style define:vars={{skillColor}}>
+        .skill {
+        color: var(--skillColor);
+        font-weight: bold;
+        }
+    </style>
+</BaseLayout>
